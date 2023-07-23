@@ -133,4 +133,18 @@ $(function() {
       $(this).append(anchor);
     }
   });
+
+  // BibTeX popup and button
+  $('#bibtex').magnificPopup({
+    type: 'inline',
+    mainClass: 'mfp-zoom-in',
+    removalDelay: 500,
+  });
+  $('#bibtex-button').on('click', function() {
+    navigator.clipboard.writeText($(this).data('bibtex'));
+    $(this).html('Copied');
+  });
+  $('#bibtex-button').on('mouseout', function() {
+    $(this).html('Copy to Clipboard');
+  });
 });

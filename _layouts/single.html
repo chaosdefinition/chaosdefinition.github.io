@@ -47,7 +47,21 @@ layout: default
           </aside>
         {% endif %}
         {{ content }}
-        {% if page.link %}<div><a href="{{ page.link }}" class="btn btn--primary">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
+        <div>
+        {% if page.link %}<a href="{{ page.link }}" target="_blank" class="btn btn--primary">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a>{% endif %}
+        {% if page.collection == 'publications' %}
+          {% if page.pdf %}<a href="{{ page.pdf }}" target="_blank" class="btn btn--danger">PDF</a>{% endif %}
+          <a href="#bibtex-popup" id="bibtex" class="btn btn--info">BibTeX</a>
+          {% if page.repository %}
+            <a href="{{ page.repository }}" target="_blank" class="btn btn--inverse">
+              {% if page.repository contains 'https://github.com' %}
+              <i class="fab fa-github" aria-hidden="true"></i>
+              {% endif %}
+              Repository
+            </a>
+          {% endif %}
+        {% endif %}
+        </div>
       </section>
 
       <footer class="page__meta">
@@ -93,3 +107,34 @@ layout: default
     </div>
   {% endif %}
 </div>
+
+{% if page.collection == 'publications' %}
+<div id="bibtex-popup" class="popup mfp-with-anim mfp-hide">
+{%- assign lcb = '{' %}
+{%- assign rcb = '}' %}
+{% capture newline %}
+{% endcapture %}
+{% capture cnl %},
+{% endcapture %}
+{%- assign authors = page.bibtex.author | join: ' and ' %}
+{%- assign year = page.date | date: '%Y' %}
+{%- assign month = page.date | date: '%b' %}
+
+{%- assign bibtex = '@' | append: page.bibtex.type | append: lcb | append: page.bibtex.id | append: cnl %}
+{%- assign bibtex = bibtex | append: '  author = ' | append: lcb | append: authors | append: rcb | append: cnl %}
+{%- for field in page.bibtex %}
+  {%- if field[0] == 'type' or field[0] == 'id' or field[0] == 'author' %}
+    {%- continue %}
+  {%- endif %}
+  {%- assign bibtex = bibtex | append: '  ' | append: field[0] | append: ' = ' | append: lcb | append: field[1] | append: rcb | append: cnl %}
+{%- endfor %}
+{%- assign bibtex = bibtex | append: '  year = ' | append: lcb | append: year | append: rcb | append: cnl %}
+{%- assign bibtex = bibtex | append: '  month = ' | append: month | append: cnl %}
+{%- assign bibtex = bibtex | append: rcb | append: newline %}
+
+{% highlight bibtex linenos %}
+{{ bibtex }}
+{% endhighlight %}
+  <button id="bibtex-button" type="button" class="btn btn--primary" style="width:100%" data-bibtex="{{ bibtex }}">Copy to Clipboard</button>
+</div>
+{% endif %}
