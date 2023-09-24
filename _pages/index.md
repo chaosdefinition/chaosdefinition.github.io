@@ -46,6 +46,8 @@ side-channel attacks.
     {% case post.bibtex.type %}
       {% when 'inproceedings' %}
         In <i>{{ post.bibtex.booktitle }}</i>{% if post.bibtex.series %} ({{ post.bibtex.series }}){% endif %}.
+      {% when 'phdthesis' %}
+        <i>Ph.D. Thesis</i>.
       {% else %}
         <i>{{ post.bibtex.journal }}</i>.
     {% endcase %}
@@ -53,6 +55,8 @@ side-channel attacks.
       {{ post.bibtex.location }}.
     {% elsif post.bibtex.address %}
       {{ post.bibtex.address }}.
+    {% elsif post.bibtex.school %}
+      {{ post.bibtex.school }}.
     {% endif %}
     {{ post.date | date: "%B %Y" }}.
     </p>

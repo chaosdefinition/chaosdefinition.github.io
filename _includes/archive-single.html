@@ -30,6 +30,8 @@
         <p>Published in <i>{{ post.bibtex.booktitle }}</i>{% if post.bibtex.series %} ({{ post.bibtex.series }}){% endif %}, {{ post.date | date: "%B %Y" }}</p>
       {% elsif post.bibtex.type == 'article' %}
         <p>Published in <i>{{ post.bibtex.journal }}</i>, {{ post.date | date: "%B %Y" }}</p>
+      {% elsif post.bibtex.type == 'phdthesis' %}
+      <p><i>Ph.D. Thesis</i>, {{ post.bibtex.school }}, {{ post.date | date: "%B %Y" }}</p>
       {% endif %}
     {% else %}
       {% if post.excerpt %}<p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify | strip_html | truncate: 160 }}</p>{% endif %}
