@@ -63,7 +63,7 @@ date: "2023-07-24"
       {% when 'inproceedings' %}
         In <i>{{ post.bibtex.series }}</i>.
       {% when 'phdthesis' %}
-        <i>Ph.D. Thesis</i>.
+        <i>Ph.D. Dissertation</i>.
       {% else %}
         <i>{{ post.bibtex.journal }}</i>.
     {% endcase %}
