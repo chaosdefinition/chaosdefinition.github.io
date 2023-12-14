@@ -4,7 +4,7 @@ author_profile: true
 title: Curriculum Vitae
 permalink: /cv
 classes: wide
-date: "2023-07-24"
+date: "2023-12-13"
 ---
 
 ## Education
@@ -45,8 +45,8 @@ date: "2023-07-24"
 - Programming languages: C/C++, Java, C#, Bash, Python, Ruby, JavaScript,
                          x86/ARM/PowerPC/MIPS Assembly, SQL
 - Software & tools: Vim, Git, LLVM, Docker, Mutt, Eclipse, Sublime Text,
-                    Microsoft Office, LaTeX
-- Platforms: Linux, Windows, FreeBSD, VMware ESXi
+                    Microsoft Office, LaTeX, Xcode
+- Platforms: Linux, Windows, macOS, FreeBSD, VMware ESXi
 
 ## Research Interests
 
