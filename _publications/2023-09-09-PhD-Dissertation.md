@@ -2,7 +2,7 @@
 collection: publications
 title: "Enforcing Low-Cost Security for ARM"
 permalink: /publication/2023-09-09-PhD-Dissertation
-link: "https://www.proquest.com/docview/2862247425"
+link: "http://hdl.handle.net/1802/37786"
 classes: wide
 bibtex:
   type: phdthesis
@@ -12,7 +12,7 @@ bibtex:
   title: "Enforcing Low-Cost Security for {ARM}"
   school: "University of Rochester"
   isbn: "9798380310833"
-  url: "https://www.proquest.com/docview/2862247425"
+  url: "http://hdl.handle.net/1802/37786"
 date: "2023-09-09"
 pdf: "/assets/files/Shen@UR.pdf"
 ---
